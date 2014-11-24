@@ -20,5 +20,8 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/chocopie116/lt-praise/issues"
+  },
+  "dependencies": {
+    "express": "~4.10.3"
   }
 }
