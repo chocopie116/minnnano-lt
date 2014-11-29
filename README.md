@@ -1,18 +1,13 @@
-lt-praise
+Uh-huh
 =========
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-enjoying during among audience at Lightning talk
+easy communication between speaker and audience.
 
-LT中に利用するとなんかくだらなくて笑えてしまうサービス.
-PC利用に限定.
+### setup
+```
+npm install
+```
 
-[server] node.js, redis, socket.io
-[client] socket.io-client, three.js(web-GL)
-
-
-手段とノリで進むよ！
-
-TODO まわり
-* three.js触って3DモデリングでLTで受けそうなCCの素材を探す
-* clientサイドで実装して面白いかモック作成
-* サーバーサイドで実装. Herokuで無料の範囲でとりあえずデプロイ
+### special thanks
+[トリビアの泉 リアルへぇ～ボタン----僕の見た秩序。](http://www.dfnt.net/t/photo/column/he.shtml)
