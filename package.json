@@ -1,7 +1,7 @@
 {
-  "name": "lt-praise",
+  "name": "uh-huh",
   "version": "0.0.0",
-  "description": "some play",
+  "description": "easy communication between speaker and audience",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,15 +11,13 @@
     "url": "git://github.com/chocopie116/lt-praise.git"
   },
   "keywords": [
-    "threejs",
-    "node",
-    "socket.io",
-    "webgl"
+    "node.js",
+    "flash"
   ],
   "author": "Tsubasa-Kajinuma",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chocopie116/lt-praise/issues"
+    "url": "https://github.com/chocopie116/uh-huh/issues"
   },
   "dependencies": {
     "express": "~4.10.3",
