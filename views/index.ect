@@ -1,3 +1,15 @@
-<div onmousedown="console.log(1)">
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<div id="uh-huh-button">
 <embed src="/flash/he-dfnt2.swf" quality="high" pluginspage="http://www.macromedia.com/jp/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="450" height="445">
 </div>
+
+<script>
+    var socket = io.connect('/');
+    var talk_session_id = 'xxxxxxx';
+
+    $('#uh-huh-button').mousedown(function() {
+        socket.emit('uh-huh', {talk: talk_session_id});
+    });
+
+</script>
