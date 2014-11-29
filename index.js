@@ -18,7 +18,8 @@ var home = require('./controller/home');
 app.get('/', home.index);
 
 io.on('connection', function (socket) {
+  var count = 1;
   socket.on('uh-huh', function (data) {
-      console.log(data);
+      console.log(count++, data);
     });
 });
