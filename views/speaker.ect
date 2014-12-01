@@ -1,13 +1,14 @@
 SPEAKERの画面です。
 
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
+<p id="count">0</p>
 <script>
     var socket = io.connect('/');
 
-    socket.on('test', function(data) {
-        console.log(data);
-    });
+    var $count = $('#count');
 
+    socket.on('test', function(data) {
+        $count.text(data);
+    });
 </script>
-<p id="count">0</p>
