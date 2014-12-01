@@ -21,8 +21,8 @@ app.get('/', function(req, res) {
 });
 app.get('/event', event.index);
 
+var count = 0;
 io.on('connection', function (socket) {
-  var count = 0;
   socket.on('uh-huh', function (data) {
       count++;
       io.emit('test', count);
