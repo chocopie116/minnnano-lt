@@ -23,6 +23,9 @@
     "express": "~4.10.3",
     "ect": "~0.5.9",
     "socket.io": "~1.2.1",
-    "socket.io-client": "~1.2.1"
+    "socket.io-client": "~1.2.1",
+    "redis": "~0.12.1",
+    "mocha": "~2.0.1",
+    "power-assert": "~0.10.0"
   }
 }
