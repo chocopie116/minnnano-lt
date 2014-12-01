@@ -1,11 +1,13 @@
 SPEAKERの画面です。
 
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
 <script>
     var socket = io.connect('/');
-    var talk_session_id = 'xxxxxxx';
 
-    $('#uh-huh-button').mousedown(function() {
-        socket.emit('uh-huh', {talk: talk_session_id});
+    socket.on('test', function(data) {
+        console.log(data);
     });
 
 </script>
+<p id="count">0</p>

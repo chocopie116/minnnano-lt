@@ -27,5 +27,6 @@ io.on('connection', function (socket) {
   var count = 1;
   socket.on('uh-huh', function (data) {
       console.log(count++, data);
-    });
+      io.emit('test', 1);
+  });
 });
