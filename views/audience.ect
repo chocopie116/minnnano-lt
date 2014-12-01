@@ -1,9 +1,10 @@
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <div id="uh-huh-button">
 <embed src="/flash/he-dfnt2.swf" quality="high" pluginspage="http://www.macromedia.com/jp/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="450" height="445">
 </div>
 
+<p id="count">0</p>
 <script>
     var socket = io.connect('/');
     var talk_session_id = 'xxxxxxx';
@@ -12,4 +13,10 @@
         socket.emit('uh-huh', {talk: talk_session_id});
     });
 
+    var $count = $('#count');
+
+    socket.on('test', function(data) {
+    console.log(data);
+        $count.text(data);
+    });
 </script>

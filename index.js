@@ -20,13 +20,12 @@ var audience = require('./controller/audience'),
 app.get('/', function(req, res) {
     res.render('top.ect');
 });
-app.get('/audience', audience.index);
-app.get('/speaker', speaker.index);
+app.get('/event', audience.index);
 
 io.on('connection', function (socket) {
-  var count = 1;
+  var count = 0;
   socket.on('uh-huh', function (data) {
-      console.log(count++, data);
-      io.emit('test', 1);
+      count++;
+      io.emit('test', count);
   });
 });
