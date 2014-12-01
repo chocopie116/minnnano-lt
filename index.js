@@ -14,12 +14,17 @@ app.engine('ect', ECT({ watch: true, root: __dirname + '/views', ext: '.ect'}).r
 server.listen(port);
 
 
-var home = require('./controller/home');
-app.get('/', home.index);
+var event = require('./controller/event');
 
+app.get('/', function(req, res) {
+    res.render('top.ect');
+});
+app.get('/event', event.index);
+
+var count = 0;
 io.on('connection', function (socket) {
-  var count = 1;
   socket.on('uh-huh', function (data) {
-      console.log(count++, data);
-    });
+      count++;
+      io.emit('test', count);
+  });
 });
