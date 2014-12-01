@@ -1,0 +1,11 @@
+SPEAKERの画面です。
+
+<script>
+    var socket = io.connect('/');
+    var talk_session_id = 'xxxxxxx';
+
+    $('#uh-huh-button').mousedown(function() {
+        socket.emit('uh-huh', {talk: talk_session_id});
+    });
+
+</script>

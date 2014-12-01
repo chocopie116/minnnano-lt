@@ -14,8 +14,14 @@ app.engine('ect', ECT({ watch: true, root: __dirname + '/views', ext: '.ect'}).r
 server.listen(port);
 
 
-var home = require('./controller/home');
-app.get('/', home.index);
+var audience = require('./controller/audience'),
+    speaker = require('./controller/speaker');
+
+app.get('/', function(req, res) {
+    res.render('top.ect');
+});
+app.get('/audience', audience.index);
+app.get('/speaker', speaker.index);
 
 io.on('connection', function (socket) {
   var count = 1;
