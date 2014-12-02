@@ -24,8 +24,13 @@
     "ect": "~0.5.9",
     "socket.io": "~1.2.1",
     "socket.io-client": "~1.2.1",
-    "redis": "~0.12.1",
+    "redis": "~0.12.1"
+  },
+  "devDependencies": {
     "mocha": "~2.0.1",
-    "power-assert": "~0.10.0"
+    "gulp-mocha": "~2.0.0",
+    "power-assert": "~0.10.0",
+    "gulp-espower": "~0.10.0",
+    "gulp": "~3.8.10"
   }
 }
