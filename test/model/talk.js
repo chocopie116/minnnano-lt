@@ -22,12 +22,28 @@ describe('Talkモデルのテスト', function() {
         assert(1 === talk.getCount());
     });
 
-    it('次のスピーカーになったらcountは0', function() {
-        var talk = Talk.findCurrent();
-        talk.nextSpeaker('佐藤さん');
 
-        assert(0 === talk.getCount());
-        assert('佐藤さん' === talk.getSpeaker());
+    describe('nextSpeaker()のテスト', function () {
+        it('次のスピーカーになったら返り値はtrue, そしてcountは0になって発表者名も変わる', function(done) {
+            var talk = Talk.findCurrent();
+            var result = talk.nextSpeaker('佐藤さん');
+
+            assert(true === result);
+            assert(0 === talk.getCount());
+            assert('佐藤さん' === talk.getSpeaker());
+            done();
+        });
+
+        it('同じnameを投げたらfalse, そしてcountも発表者名も変化しない', function() {
+            var talk = Talk.findCurrent();
+            talk.countUp(); //とりあえず状態が維持されているかを確認するためcountUpしとく
+
+            var result = talk.nextSpeaker('佐藤さん');
+
+            assert(false === result);
+            assert(1 === talk.getCount()); //1のままになる
+            assert('佐藤さん' === talk.getSpeaker());
+        });
     });
 
     it('リセットしたら、countは0で、名前も名無しになる', function() {

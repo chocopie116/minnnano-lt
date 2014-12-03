@@ -26,10 +26,13 @@ var Talk = function() {
     }
 
     this.nextSpeaker = function(name) {
-        if (speaker != name) {
-            speaker = name;
-            count = 0;
+        if (speaker == name) {
+            return false;
         }
+
+        speaker = name;
+        count = 0;
+        return true;
     }
 }
 
