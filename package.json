@@ -1,5 +1,5 @@
 {
-  "name": "uh-huh",
+  "name": "minnnano-lt",
   "version": "0.0.0",
   "description": "easy communication between speaker and audience",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/chocopie116/lt-praise.git"
+    "url": "git://github.com/chocopie116/minnnano-lt.git"
   },
   "keywords": [
     "node.js",
@@ -17,7 +17,7 @@
   "author": "Tsubasa-Kajinuma",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chocopie116/uh-huh/issues"
+    "url": "https://github.com/chocopie116/minnnano-lt/issues"
   },
   "directories": {
     "test": "test/"
