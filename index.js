@@ -19,7 +19,25 @@ var event = require('./controller/event');
 app.get('/', function(req, res) {
     res.render('top.ect');
 });
-app.get('/event', event.index);
+
+/**
+ * 現在のトークにへぇを押す画面を出力
+ */
+app.get('/talk', function(req, res) {
+    res.render('event');
+});
+
+/**
+ * 現在の問題を変更する
+ */
+app.get('/talk/create', function(req, res) {
+    //同じ人なら変更しない
+    //console.log(req.query.key);
+    //res.render('event');
+    //resetする
+    //talk->clear
+    //talk->update
+});
 
 var count = 0;
 io.on('connection', function (socket) {
