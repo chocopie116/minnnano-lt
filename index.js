@@ -35,6 +35,7 @@ app.get('/talk/create', function(req, res) {
         res.send('二重投稿です');
     }
 
+    io.emit('change-speaker', {speaker:talk.getSpeaker()});
     res.send('発表者は' + talk.getSpeaker() + 'になりました');
 });
 
@@ -42,6 +43,6 @@ var count = 0;
 io.on('connection', function (socket) {
   socket.on('uh-huh', function (data) {
       var count = talk.countUp();
-      io.emit('test', count);
+      io.emit('count-up', {count: count});
   });
 });
