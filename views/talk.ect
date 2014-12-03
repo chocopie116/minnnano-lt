@@ -19,31 +19,53 @@
                 color:white;
             }
         </style>
-        <div id="status">
+        <div id="talk">
             <p id="speaker" style='margin-top:10px;margin-bottom:-120px;'><%= @speaker %></p>
             <p id="count" class="odometer" style="font-size:130px;margin-bottom:10px"><%= @count %></p>
         </div>
-       <div id="uh-huh-button">
-           <embed src="/flash/he-dfnt2.swf" quality="high" pluginspage="http://www.macromedia.com/jp/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="540" height="534">
+
+       <div id="button-area" style="position:relative">
+           <embed id="uh-huh-button" src="/flash/he-dfnt2.swf" quality="high" pluginspage="http://www.macromedia.com/jp/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="540" height="534">
+           <img id="break-image" src="/img/top.png" style="width:540px;opacity:0.6; display:none;">
+            <p id="notification" style="font-size:20px">※20回までしか押せません。</p>
        </div>
        <script>
-           var socket = io.connect('/');
+           var $talk = $('#talk'),
+               $buttonArea = $('#button-area');
 
-           $('#uh-huh-button').mousedown(function() {
+           var socket = io.connect('/');
+           var localClickCount = 0;
+
+           $('#button-area').mousedown(function() {
+               if (localClickCount >= 20) {
+                   buttonOff();
+                   return;
+               }
                socket.emit('uh-huh');
+               localClickCount++;
            });
 
-           var $count = $('#count');
-           var $speaker = $('#speaker');
-
            socket.on('count-up', function(data) {
-               $count.text(data.count);
+               $talk.find('#count').text(data.count);
            });
 
            socket.on('change-speaker', function(data) {
-               $speaker.text(data.speaker);
-               $count.text(0);
+               $talk.find('#speaker').text(data.speaker);
+               $talk.find('#count').text(0);
+               buttonOn();
+               localClickCount = 0;
            });
+
+           function buttonOn() {
+               $buttonArea.find('#break-image').hide().end()
+                          .find('#uh-huh-button').show().end()
+                          .find('#notification').text('※20回までしか押せません。');
+           }
+           function buttonOff() {
+               $buttonArea.find('#uh-huh-button').hide().end()
+                          .find('#break-image').show().end()
+                          .find('#notification').text('次の発表になると自動でボタンがまた表示されますので、しばらく休憩しててください。');
+           }
        </script>
     </body>
 </html>
