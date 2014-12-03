@@ -22,7 +22,7 @@ app.get('/', function(req, res) {
  * 現在のトークにへぇを押す画面を出力
  */
 app.get('/talk', function(req, res) {
-    res.render('event', {count: talk.getCount(), speaker: talk.getSpeaker()});
+    res.render('talk', {count: talk.getCount(), speaker: talk.getSpeaker()});
 });
 
 /**
