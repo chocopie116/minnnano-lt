@@ -22,20 +22,25 @@ app.get('/', function(req, res) {
  * 現在のトークにへぇを押す画面を出力
  */
 app.get('/talk', function(req, res) {
-    res.render('talk', {count: talk.getCount(), speaker: talk.getSpeaker()});
+    res.render('talk', {count: talk.getCount(), speaker: '発表:' +talk.getSpeaker()+'さん'});
 });
 
 /**
  * 現在の問題を変更する
  */
 app.get('/talk/create', function(req, res) {
+    var name = req.query.name;
+    if (!name) {
+        return res.send('名前がパラメータにありません');
+    }
+
     //同じ人なら変更しない
-    var result = talk.nextSpeaker(req.query.name);
+    var result = talk.nextSpeaker(name);
     if (!result) {
         res.send('二重投稿です');
     }
 
-    io.emit('change-speaker', {speaker:talk.getSpeaker()});
+    io.emit('change-speaker', {speaker: '発表:'+talk.getSpeaker() +'さん'});
     res.send('発表者は' + talk.getSpeaker() + 'になりました');
 });
 
