@@ -15,16 +15,16 @@
                 text-align: center;
             }
             p {
-                font-size:100px;
+                font-size:80px;
                 color:white;
             }
         </style>
         <div id="status">
-            <p id="speaker" style='margin-bottom: -100px;'><%= @speaker %></p>
-            <p id="count" class="odometer" style="font-size:130px"><%= @count %></p>
+            <p id="speaker" style='margin-top:10px;margin-bottom:-120px;'><%= @speaker %></p>
+            <p id="count" class="odometer" style="font-size:130px;margin-bottom:10px"><%= @count %></p>
         </div>
        <div id="uh-huh-button">
-           <embed src="/flash/he-dfnt2.swf" quality="high" pluginspage="http://www.macromedia.com/jp/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="450" height="445">
+           <embed src="/flash/he-dfnt2.swf" quality="high" pluginspage="http://www.macromedia.com/jp/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="540" height="534">
        </div>
        <script>
            var socket = io.connect('/');
