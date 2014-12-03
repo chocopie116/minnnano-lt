@@ -13,9 +13,7 @@ app.engine('ect', ECT({ watch: true, root: __dirname + '/views', ext: '.ect'}).r
 
 server.listen(port);
 
-
-var event = require('./controller/event');
-
+var talk = require('./model/talk').findCurrent();
 app.get('/', function(req, res) {
     res.render('top.ect');
 });
@@ -32,17 +30,18 @@ app.get('/talk', function(req, res) {
  */
 app.get('/talk/create', function(req, res) {
     //同じ人なら変更しない
-    //console.log(req.query.key);
-    //res.render('event');
-    //resetする
-    //talk->clear
-    //talk->update
+    var result = talk.nextSpeaker(req.query.name);
+    if (!result) {
+        res.send('二重投稿です');
+    }
+
+    res.send('発表者は' + talk.getSpeaker() + 'になりました');
 });
 
 var count = 0;
 io.on('connection', function (socket) {
   socket.on('uh-huh', function (data) {
-      count++;
+      var count = talk.countUp();
       io.emit('test', count);
   });
 });
