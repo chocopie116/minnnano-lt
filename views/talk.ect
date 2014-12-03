@@ -30,42 +30,44 @@
             <p id="notification" style="font-size:20px">※20回までしか押せません。</p>
        </div>
        <script>
-           var $talk = $('#talk'),
-               $buttonArea = $('#button-area');
+           (function($) {
+                var $talk = $('#talk'),
+                    $buttonArea = $('#button-area');
 
-           var socket = io.connect('/');
-           var localClickCount = 0;
+                var socket = io.connect('/');
+                var localClickCount = 0;
 
-           $('#button-area').mousedown(function() {
-               if (localClickCount >= 20) {
-                   buttonOff();
-                   return;
-               }
-               socket.emit('uh-huh');
-               localClickCount++;
-           });
+                $('#button-area').mousedown(function() {
+                    if (localClickCount >= 20) {
+                        buttonOff();
+                        return;
+                    }
+                    socket.emit('uh-huh');
+                    localClickCount++;
+                });
 
-           socket.on('count-up', function(data) {
-               $talk.find('#count').text(data.count);
-           });
+                socket.on('count-up', function(data) {
+                    $talk.find('#count').text(data.count);
+                });
 
-           socket.on('change-speaker', function(data) {
-               $talk.find('#speaker').text(data.speaker);
-               $talk.find('#count').text(0);
-               buttonOn();
-               localClickCount = 0;
-           });
+                socket.on('change-speaker', function(data) {
+                    $talk.find('#speaker').text(data.speaker);
+                    $talk.find('#count').text(0);
+                    buttonOn();
+                    localClickCount = 0;
+                });
 
-           function buttonOn() {
-               $buttonArea.find('#break-image').hide().end()
-                          .find('#uh-huh-button').show().end()
-                          .find('#notification').text('※20回までしか押せません。');
-           }
-           function buttonOff() {
-               $buttonArea.find('#uh-huh-button').hide().end()
-                          .find('#break-image').show().end()
-                          .find('#notification').text('次の発表になると自動でボタンがまた表示されますので、しばらく休憩しててください。');
-           }
+                function buttonOn() {
+                    $buttonArea.find('#break-image').hide().end()
+                               .find('#uh-huh-button').show().end()
+                               .find('#notification').text('※20回までしか押せません。');
+                }
+                function buttonOff() {
+                    $buttonArea.find('#uh-huh-button').hide().end()
+                               .find('#break-image').show().end()
+                               .find('#notification').text('次の発表になると自動でボタンがまた表示されますので、しばらく休憩しててください。');
+                }
+          })(jQuery);
        </script>
     </body>
 </html>
