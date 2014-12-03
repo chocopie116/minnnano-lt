@@ -1,26 +1,49 @@
-<script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<div id="uh-huh-button">
-<embed src="/flash/he-dfnt2.swf" quality="high" pluginspage="http://www.macromedia.com/jp/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="450" height="445">
-</div>
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>みんなのえるてぃ</title>
+        <script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-train-station.css" />
+        <script src="http://github.hubspot.com/odometer/odometer.js"></script>
+    </head>
 
-<p id="speaker"><%= @speaker %></p>
-<p id="count"><%= @count %></p>
-<script>
-    var socket = io.connect('/');
+    <body>
+        <style>
+            body {
+                background-color: black;
+                text-align: center;
+            }
+            p {
+                font-size:100px;
+                color:white;
+            }
+        </style>
+        <div id="status">
+            <p id="speaker" style='margin-bottom: -100px;'><%= @speaker %></p>
+            <p id="count" class="odometer" style="font-size:130px"><%= @count %></p>
+        </div>
+       <div id="uh-huh-button">
+           <embed src="/flash/he-dfnt2.swf" quality="high" pluginspage="http://www.macromedia.com/jp/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="450" height="445">
+       </div>
+       <script>
+           var socket = io.connect('/');
 
-    $('#uh-huh-button').mousedown(function() {
-        socket.emit('uh-huh');
-    });
+           $('#uh-huh-button').mousedown(function() {
+               socket.emit('uh-huh');
+           });
 
-    var $count = $('#count');
-    var $speaker = $('#speaker');
+           var $count = $('#count');
+           var $speaker = $('#speaker');
 
-    socket.on('count-up', function(data) {
-        $count.text(data.count);
-    });
+           socket.on('count-up', function(data) {
+               $count.text(data.count);
+           });
 
-    socket.on('change-speaker', function(data) {
-        $speaker.text(data.speaker);
-    });
-</script>
+           socket.on('change-speaker', function(data) {
+               $speaker.text(data.speaker);
+               $count.text(0);
+           });
+       </script>
+    </body>
+</html>
