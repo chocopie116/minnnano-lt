@@ -15,14 +15,14 @@ server.listen(port);
 
 var talk = require('./model/talk').findCurrent();
 app.get('/', function(req, res) {
-    res.render('top.ect');
+    res.render('top');
 });
 
 /**
  * 現在のトークにへぇを押す画面を出力
  */
 app.get('/talk', function(req, res) {
-    res.render('event');
+    res.render('event', {count: talk.getCount(), speaker: talk.getSpeaker()});
 });
 
 /**
