@@ -1,8 +1,9 @@
 {
-  "name": "Uh-huh",
+  "name": "minnano-lt",
   "description": "Easy Communication between Speaker and Audience.",
   "keywords": [
     "node.js",
+    "socket.io",
     "flash"
   ],
   "env": {}
