@@ -26,13 +26,15 @@
 
        <div id="button-area" style="position:relative">
            <embed id="uh-huh-button" src="/flash/he-dfnt2.swf" quality="high" pluginspage="http://www.macromedia.com/jp/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="540" height="534">
-           <img id="break-image" src="/img/top.png" style="width:540px;opacity:0.6; display:none;">
-            <p id="notification" style="font-size:20px">※20回までしか押せません。</p>
+           <img id="break-image" src="/img/top.png" style="width:800px;opacity:0.6; display:none;">
        </div>
+            <p id="notification" style="font-size:20px">※20回までしか押せません。</p>
+            <a href="http://www.dfnt.net/t/photo/column/he.shtml" target="_blank"><p style="font-size:20px">Special Thanks</p></a>
        <script>
            (function($) {
                 var $talk = $('#talk'),
-                    $buttonArea = $('#button-area');
+                    $buttonArea = $('#button-area'),
+                    $notification = $('#notification');
 
                 var socket = io.connect('/');
                 var localClickCount = 0;
@@ -59,14 +61,14 @@
 
                 function buttonOn() {
                     $buttonArea.find('#break-image').hide().end()
-                               .find('#uh-huh-button').show().end()
-                               .find('#notification').text('※20回までしか押せません。');
+                        .find('#uh-huh-button').show();
+                    $notification.text('※20回までしか押せません。');
                     window.location.reload();
                 }
                 function buttonOff() {
                     $buttonArea.find('#uh-huh-button').hide().end()
-                               .find('#break-image').show().end()
-                               .find('#notification').text('次の発表になると自動でボタンがまた表示されますので、しばらく休憩しててください。');
+                               .find('#break-image').show();
+                    $notification.text('次の発表になると自動でボタンがまた表示されますので、しばらく休憩しててください。');
                 }
           })(jQuery);
        </script>
