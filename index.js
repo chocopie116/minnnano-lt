@@ -25,10 +25,6 @@ app.get('/talk', function(req, res) {
     res.render('talk', {count: talk.getCount(), speaker: '発表:' +talk.getSpeaker()+'さん'});
 });
 
-app.get('/simple', function(req, res) {
-    res.render('simple');
-});
-
 /**
  * 現在の問題を変更する
  */
