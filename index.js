@@ -1,6 +1,9 @@
 var express = require('express'),
     app = express(),
-    server = require('http').Server(app),
+    http = require('http');
+    http.globalAgent.maxSockets = 100;
+
+var server = http.Server(app),
     path = require('path'),
     ECT = require('ect'),
     port = process.env.PORT || 3000,
