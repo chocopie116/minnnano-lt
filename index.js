@@ -37,7 +37,7 @@ app.get('/talk/create', function(req, res) {
     //同じ人なら変更しない
     var result = talk.nextSpeaker(name);
     if (!result) {
-        res.send('二重投稿です');
+        return res.send('二重投稿です');
     }
 
     io.emit('change-speaker', {speaker: '発表:'+talk.getSpeaker() +'さん'});
