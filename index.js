@@ -22,7 +22,7 @@ app.get('/', function(req, res) {
 });
 
 /**
- * 現在のトークにへぇを押す画面を出力
+ * 現在のトークにボタンを押す画面を出力
  */
 app.get('/talk', function(req, res) {
     res.render('talk', {count: talk.getCount(), speaker: '発表:' +talk.getSpeaker()+'さん'});
