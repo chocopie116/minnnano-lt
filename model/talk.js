@@ -2,6 +2,8 @@
  * インメモリで動作させる
  */
 var count = 0,
+    totalCount = 0, //for Logging
+    talkResult = [],
     speaker = '名無しさん';
 
 var Talk = function() {
@@ -22,6 +24,10 @@ var Talk = function() {
     //カウントアップ
     this.countUp = function() {
         count++;
+        totalCount++;
+        if (totalCount % 50 == 0) {
+            console.log('現在の総合へぇ数は ' + totalCount + 'です.');
+        }
         return count;
     }
 
@@ -29,6 +35,9 @@ var Talk = function() {
         if (speaker == name) {
             return false;
         }
+
+        talkResult.push({speaker: speaker, count: count});
+        console.log(talkResult);
 
         speaker = name;
         count = 0;
